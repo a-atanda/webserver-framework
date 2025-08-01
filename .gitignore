@@ -1,0 +1,24 @@
+# Ruby
+*.gem
+.bundle/
+vendor/bundle/
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+env/
+
+# Meteor / Node
+.meteor/local/
+node_modules/
+
+# Docker & OS
+.DS_Store
+*.log
+*.swp
+
+# IDEs
+.vscode/
+.idea/

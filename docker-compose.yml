@@ -1,0 +1,25 @@
+services:
+  nginx:
+    build: ./nginx
+    image: aatanda/webserver-nginx:latest
+    ports:
+      - "8080:80"
+    depends_on:
+      - app
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  app:
+    build:
+      context: './apps/${APP_TYPE:-ruby-app}'
+      dockerfile: Dockerfile
+    image: 'aatanda/webserver-${APP_TYPE:-ruby-app}:latest'
+    expose:
+      - "3000"
+
+networks:
+  default:
+    driver: bridge
